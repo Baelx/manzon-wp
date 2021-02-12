@@ -1,0 +1,52 @@
+.call-now {
+  margin-bottom: 3px;
+}
+
+.call-to-action {
+  padding: 2em 1em;
+  font-size: 1.5em;
+  text-align: center;
+
+  @include atSmall {
+    padding: 2rem 0;
+  }
+  @include atMedium {
+    font-size: 2em;
+  }
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .btn {
+    font-size: 20px;
+    padding: 1rem 2rem;
+    color: $dark-blue;
+    border: 5px solid $med-blue;
+    margin-bottom: 1rem;
+
+    &:hover {
+      color: white;
+      border: 5px solid $med-blue;
+      background-color: $med-blue;
+      transform: scale3d(1.05, 1.05, 1);
+    }
+  }
+
+  .contact-info {
+    color: black;
+
+    p {
+      display: inline;
+    }
+  }
+
+  &__call-now {
+    margin-bottom: 2em;
+  }
+
+
+  &--white {
+    color: white;
+  }
+}

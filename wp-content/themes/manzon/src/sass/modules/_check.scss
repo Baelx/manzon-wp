@@ -1,0 +1,42 @@
+svg {
+  width: 30px;
+  display: inline;
+  min-width: 30px;
+
+  @include atMedium {
+    min-width: 50px;
+    width: 50px;
+  }
+}
+
+.check {
+  stroke: $med-blue;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: -100;
+  fill: none;
+  stroke-width: 15;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+
+.check--animate {
+  animation: dash-check 1.25s 0.4s ease-in-out forwards;
+}
+
+@-webkit-keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}

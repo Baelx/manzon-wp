@@ -1,0 +1,22 @@
+.btn {
+  padding: 0;
+  border: none;
+  background: none;
+  margin: 2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--hero-cta {
+    color: white;
+    border: 3px solid white;
+    padding: 5px 10px;
+    border-radius: 2px;
+  }
+
+  &--hero-cta:hover {
+    background-color: white;
+    color: $dark-blue;
+  }
+}

@@ -1,0 +1,48 @@
+.features {
+  text-align: center;
+  font-size: 28px;
+
+  @include atMedium {
+    padding: 1.5em;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    // width: 100%;
+  }
+
+  .container--industry {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    @include atMedium {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+
+    p {
+      display: inline;
+      // font-size: 0.8em;
+    }
+
+    &__title {
+      margin: 1em 0 0 0;
+    }
+
+    &--detail {
+      margin: 0 1em;
+
+      p {
+        font-size: 20px;
+        margin-top: 0;
+        font-weight: 300;
+      }
+    }
+  }
+}

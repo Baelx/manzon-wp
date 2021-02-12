@@ -1,0 +1,148 @@
+.hero {
+  position: relative;
+  z-index: 0;
+
+  &__video {
+    width: 100%;
+
+    @include atSmall {
+      width: 100%;
+      height: auto;
+    }
+
+    video {
+      width: auto;
+      height: 100%;
+
+      @include atMedLarge {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__text {
+    z-index: 1;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    background-color: #0000009e;
+    padding: 3em 2em;
+    border-radius: 7px;
+    line-height: 1.3;
+    font-size: 0.9em; 
+
+    @include atSmall {
+      font-size: 0.9em;
+    }
+
+    @include atMedium {
+      left: 10%;
+      transform: translate(0, -50%);
+      width: 530px;
+      font-size: 1em;
+    }
+
+    &--headline {
+      font-size: 2em;
+      margin: 0;
+    }
+  }
+
+  &__see-more {
+    display: inline-block;
+
+    &-link {
+      font-size: 22px;
+      padding-bottom: 3px;
+    }
+  }
+
+  &--industry-page {
+    height: 300px;
+    width: 100%;
+
+    @include atMedium {
+    height: 400px;
+
+    }
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    }
+
+    &__title {
+      align-items: center;
+      display: flex;
+      height: 100%;
+    }
+
+    h1 {
+      color: white;
+      text-transform: uppercase;
+      position: relative;
+      margin: 0;
+      z-index: 1;
+      font-weight: 200;
+      letter-spacing: 3px;
+      font-size: 3rem;
+      margin-left: 3rem;
+      
+      @include atMedium {
+      font-size: 4rem;
+      }
+    }
+  }
+
+  &--home-page {
+    height: 90vh;
+    overflow: hidden;
+  }
+
+  &--info-page {
+    height: 250px;
+
+    h1 {
+      margin: 0;
+      padding: 140px;
+      text-align: center;
+      font-size: 50px;
+    }
+  }
+
+  &--404 {
+    height: 620px;
+    text-align: center;
+    color: black;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__text {
+      color: white;
+      background-color: #0000009e;
+      padding: 2.5em 4em;
+      border-radius: 7px;
+      line-height: 1.3;
+      position: relative;
+
+      p,
+      button {
+        font-size: 30px;
+        margin-bottom: 1em;
+      }
+    }
+  }
+}
