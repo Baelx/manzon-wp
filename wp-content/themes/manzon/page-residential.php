@@ -9,53 +9,29 @@
   <section class="features">
     <h3 class="section-title section-title--no-p">We're here to help with all areas of the home</h3>
     <div class="container--industry">
+    <?php
+      $args = array(
+        'numberposts'	=> -1,
+        'post_type'		=> 'manzon_service',
+        'meta_key'		=> '_manzon_service_type_key',
+        'meta_value'	=> 'residential'
+      );
+
+      $query = new WP_Query( $args );
+
+      while ( $query->have_posts() ) : $query->the_post(); 
+
+      ?>
       <div class="feature--detail">
-        <h4 class="feature__title accent--res">Bathrooms</h4>
+        <h4 class="feature__title accent--res"><?php echo the_title() ?></h4>
         <span class="underline--feature"></span>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-      </div>
-      <div class="feature--detail">
-        <h4 class="feature__title accent--res">Kitchens</h4>
-        <span class="underline--feature"></span>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-      </div>
-      <div class="feature--detail">
-        <h4 class="feature__title accent--res">Hot Water</h4>
-        <span class="underline--feature"></span>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-
-      </div>
-      <div class="feature--detail">
-        <h4 class="feature__title accent--res">Heating</h4>
-        <span class="underline--feature"></span>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-
-      </div>
-      <div class="feature--detail">
-        <h4 class="feature__title accent--res">Kitchens</h4>
-        <span class="underline--feature"></span>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-      </div>
-      <div class="feature--detail">
-        <h4 class="feature__title accent--res">Hot Water</h4>
-        <span class="underline--feature"></span>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-
-      </div>
-      <div class="feature--detail">
-        <h4 class="feature__title accent--res">Heating</h4>
-        <span class="underline--feature"></span>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-
+        <p><?php echo the_content() ?></p>
       </div>
 
+        <?php 
+          endwhile;
+          wp_reset_postdata();
+        ?>
     </div>
   </section>
   <section class="gallery">
@@ -65,25 +41,53 @@
       <div class="gallery__residential">
         <div class="main">
         	<div class="slider slider-display">
-        		<div><img class="photo" data-lazy="assets/imgs/img_5357.jpg" alt=""> </div>
-        		<div><img class="photo" data-lazy="assets/imgs/img_7318.jpg" alt=""></div>
-        		<div><img class="photo" data-lazy="assets/imgs/img_7319.jpg" alt=""></div>
-        		<div><img class="photo" data-lazy="assets/imgs/img_8103.jpg" alt=""></div>
-            <div><img class="photo" data-lazy="assets/imgs/img_5357.jpg" alt=""> </div>
-        		<div><img class="photo" data-lazy="assets/imgs/img_7318.jpg" alt=""></div>
-        		<div><img class="photo" data-lazy="assets/imgs/img_7319.jpg" alt=""></div>
-        		<div><img class="photo" data-lazy="assets/imgs/img_8103.jpg" alt=""></div>
+          <?php
+
+              $query_images_args = array(
+                'post_type'      => 'attachment',
+                'post_mime_type' => 'image',
+                'post_status'    => 'inherit',
+                'posts_per_page' => - 1,
+              );
+
+              $query_images = new WP_Query( $query_images_args );
+
+              $images = array();
+              foreach ( $query_images->posts as $image ) {
+                if ( get_post_meta($image->ID, 'residential_gallery', false) ) {
+                ?>
+        	      	<div><img class="photo" data-lazy="<?php echo wp_get_attachment_url($image->ID) ?>" alt=""> </div>
+                <?php
+                }
+              }
+              wp_reset_postdata();
+
+              ?>
         	</div>
 
         	<div class="slider slider-nav">
-        		<div><img class="nav" data-lazy="assets/imgs/img_5357.jpg" alt=""> </div>
-        		<div><img class="nav" data-lazy="assets/imgs/img_7318.jpg" alt=""></div>
-        		<div><img class="nav" data-lazy="assets/imgs/img_7319.jpg" alt=""></div>
-        		<div><img class="nav" data-lazy="assets/imgs/img_8103.jpg" alt=""></div>
-            <div><img class="nav" data-lazy="assets/imgs/img_5357.jpg" alt=""> </div>
-        		<div><img class="nav" data-lazy="assets/imgs/img_7318.jpg" alt=""></div>
-        		<div><img class="nav" data-lazy="assets/imgs/img_7319.jpg" alt=""></div>
-        		<div><img class="nav" data-lazy="assets/imgs/img_8103.jpg" alt=""></div>
+          <?php
+
+            $query_images_args = array(
+              'post_type'      => 'attachment',
+              'post_mime_type' => 'image',
+              'post_status'    => 'inherit',
+              'posts_per_page' => - 1,
+            );
+
+            $query_images = new WP_Query( $query_images_args );
+
+            $images = array();
+            foreach ( $query_images->posts as $image ) {
+              if ( get_post_meta($image->ID, 'residential_gallery', false) ) {
+              ?>
+            		<div><img class="nav" data-lazy="<?php echo wp_get_attachment_url($image->ID) ?>" alt=""> </div>
+              <?php
+              }
+            }
+
+            wp_reset_postdata();
+            ?>
         	</div>
         </div>
       </div>

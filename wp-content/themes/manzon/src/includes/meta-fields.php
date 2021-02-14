@@ -17,9 +17,11 @@ function manzon_service_type_mb_content($post) {
     $value = get_post_meta( $post->ID, '_manzon_service_type_key', true );
     ?>
     <label for="manzon-service-type-input">Which service type does this fall under?</label>
-    <select id="">
-        <option>Residential</option>
-        <option>Commercial</option>
+    <br>
+    <select id="manzon-service-type-input" name="manzon-service-type-input">
+        <option value=""> - Select one - </option>
+        <option value="residential" <?php selected($value, 'residential') ?>>Residential</option>
+        <option value="commercial" <?php selected($value, 'commercial') ?>>Commercial</option>
     </select>
     <?php
 }

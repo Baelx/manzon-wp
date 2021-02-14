@@ -1,12 +1,8 @@
 <?php get_header() ?>
-
-<section class="hero--info-page">
+<div class="contact-page">
+  <section class="service-areas call-to-action" style="background-image: url(<?php echo get_template_directory_uri() . '/src/images/downtown.jpg' ?>)">
     <h1>Contact</h1>
-  </section>
-
-  <section class="contact__form">
-  </section>
-  <section class="call-to-action">
+    <div class="cover">
         <p>You can reach us by email or phone, 7 days a week!</p>
 
         <a class="contact-info text-em call-now" href="mailto:<?php echo esc_attr(get_option('email_address')); ?>">
@@ -16,6 +12,7 @@
         <a class="contact-info text-em call-now" href="tel:<?php echo esc_attr(get_option('phone_number')); ?>">
           <i class="fas fa-phone"></i><p><?php echo esc_attr(get_option('phone_number')); ?></p>
         </a>
+    <div>
   </section>
-
-  <?php get_footer(); ?>
+<div>
+<?php get_footer(); ?>

@@ -11,32 +11,30 @@
     <section class="features">
       <h3 class="section-title section-title--no-p">Expertise. Professionalism.</h3>
       <div class="container--industry container--industry--commercial">
-        <div class="feature--detail">
-          <h4 class="feature__title accent--com">Gas Fittings</h4>
-          <span class="underline--feature"></span>
+    <?php
+      $args = array(
+        'numberposts'	=> -1,
+        'post_type'		=> 'manzon_service',
+        'meta_key'		=> '_manzon_service_type_key',
+        'meta_value'	=> 'commercial'
+      );
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-        </div>
-        <div class="feature--detail">
-          <h4 class="feature__title accent--com">Makeup Air Units</h4>
-          <span class="underline--feature"></span>
+      $query = new WP_Query( $args );
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-        </div>
-        <div class="feature--detail">
-          <h4 class="feature__title accent--com">Maintenance</h4>
-          <span class="underline--feature"></span>
+      while ( $query->have_posts() ) : $query->the_post(); 
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
+      ?>
+      <div class="feature--detail">
+        <h4 class="feature__title accent--com"><?php echo the_title() ?></h4>
+        <span class="underline--feature"></span>
+        <p><?php echo the_content() ?></p>
+      </div>
 
-        </div>
-        <div class="feature--detail">
-          <h4 class="feature__title accent--com">Heating</h4>
-          <span class="underline--feature"></span>
+        <?php 
+          endwhile;
+          wp_reset_postdata();
+        ?>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
-
-        </div>
 
       </div>
     </section>
@@ -46,27 +44,55 @@
       <div class="gallery__container">
         <div class="gallery__residential">
           <div class="main">
-            <div class="slider slider-display">
-              <div><img class="photo" data-lazy="assets/imgs/img_5357.jpg" alt=""> </div>
-              <div><img class="photo" data-lazy="assets/imgs/img_7318.jpg" alt=""></div>
-              <div><img class="photo" data-lazy="assets/imgs/img_7319.jpg" alt=""></div>
-              <div><img class="photo" data-lazy="assets/imgs/img_8103.jpg" alt=""></div>
-              <div><img class="photo" data-lazy="assets/imgs/img_5357.jpg" alt=""> </div>
-              <div><img class="photo" data-lazy="assets/imgs/img_7318.jpg" alt=""></div>
-              <div><img class="photo" data-lazy="assets/imgs/img_7319.jpg" alt=""></div>
-              <div><img class="photo" data-lazy="assets/imgs/img_8103.jpg" alt=""></div>
-            </div>
+        	<div class="slider slider-display">
+          <?php
 
-            <div class="slider slider-nav">
-              <div><img class="nav" data-lazy="assets/imgs/img_5357.jpg" alt=""> </div>
-              <div><img class="nav" data-lazy="assets/imgs/img_7318.jpg" alt=""></div>
-              <div><img class="nav" data-lazy="assets/imgs/img_7319.jpg" alt=""></div>
-              <div><img class="nav" data-lazy="assets/imgs/img_8103.jpg" alt=""></div>
-              <div><img class="nav" data-lazy="assets/imgs/img_5357.jpg" alt=""> </div>
-              <div><img class="nav" data-lazy="assets/imgs/img_7318.jpg" alt=""></div>
-              <div><img class="nav" data-lazy="assets/imgs/img_7319.jpg" alt=""></div>
-              <div><img class="nav" data-lazy="assets/imgs/img_8103.jpg" alt=""></div>
-            </div>
+              $query_images_args = array(
+                'post_type'      => 'attachment',
+                'post_mime_type' => 'image',
+                'post_status'    => 'inherit',
+                'posts_per_page' => - 1,
+              );
+
+              $query_images = new WP_Query( $query_images_args );
+
+              $images = array();
+              foreach ( $query_images->posts as $image ) {
+                if ( get_post_meta($image->ID, 'commercial_gallery', false) ) {
+                ?>
+        	      	<div><img class="photo" data-lazy="<?php echo wp_get_attachment_url($image->ID) ?>" alt=""> </div>
+                <?php
+                }
+              }
+              wp_reset_postdata();
+
+              ?>
+        	</div>
+
+        	<div class="slider slider-nav">
+          <?php
+
+            $query_images_args = array(
+              'post_type'      => 'attachment',
+              'post_mime_type' => 'image',
+              'post_status'    => 'inherit',
+              'posts_per_page' => - 1,
+            );
+
+            $query_images = new WP_Query( $query_images_args );
+
+            $images = array();
+            foreach ( $query_images->posts as $image ) {
+              if ( get_post_meta($image->ID, 'commercial_gallery', false) ) {
+              ?>
+            		<div><img class="nav" data-lazy="<?php echo wp_get_attachment_url($image->ID) ?>" alt=""> </div>
+              <?php
+              }
+            }
+
+            wp_reset_postdata();
+            ?>
+        	</div>
           </div>
         </div>
       </div>

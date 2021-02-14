@@ -1,24 +1,46 @@
-.about-content {
-  padding: 0 6em;
-  line-height: 1.5;
+.about-page {
+  overflow-x: hidden;
 
-    &--top {
-      text-align: center;
-    }
-
-    &--left {
-      max-width: 50%;
-      padding: 0.5em 1.5em;
-    }
-
-    &--right {
-      max-width: 50%;
-      padding: 0.5em 1.5em;
-      display: inline-block;
-    }
-
-  p {
-    font-size: 30px;
-    font-weight: 300;
+  .service-areas{
+    padding-bottom: 0;
   }
+
+  .cover {
+    padding: 4rem;
+
+    @include atLarge {
+      padding: 8rem;
+    }
+
+    
+    .about-content {
+      padding: 0;
+      line-height: 1.5;
+
+      @include atMedium {
+        padding: 0 6rem;
+      }
+      
+      &--top {
+        text-align: center;
+      }
+      
+      &--left {
+        max-width: 50%;
+        padding: 0.5em 1.5em;
+      }
+      
+      &--right {
+        max-width: 50%;
+        padding: 0.5em 1.5em;
+        display: inline-block;
+      }
+      
+      p {
+        font-size: 30px;
+        font-weight: 300;
+      }
+    }
+  }
+  
 }

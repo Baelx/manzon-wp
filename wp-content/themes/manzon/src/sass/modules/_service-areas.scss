@@ -4,40 +4,75 @@
 
   .cover {
     background-color: hsla(0, 0%, 100%, 0.6);
+    padding: 3rem;
+
   }
 
   h3 {
     text-align: center;
     font-size: 30px;
-    padding-top: 3rem;
     margin-top: 0;
   }
 
   .areas--first {
     float: none;
     padding: 0;
+    margin: 0 auto;
 
+    
     @include atMedium {
       float: left;
-      padding-left: 5rem;
+      padding-left: 2rem;
+    }
+    
+    @include atMedLarge {
+      float: left;
+      padding-left: 4rem;
     }
   }
 
   .areas--second {
     float: none;
     padding: 0;
+    margin: 0 auto;
 
+    
     @include atMedium {
       float: right;
-      padding-right: 5rem;
+      padding-right: 2rem;
+    }
+
+    @include atMedLarge {
+      float: right;
+      padding-right: 4rem;
     }
   }
 
-  li {
-    font-size: 23px;
-    padding: 1rem 0;
-    color: $med-blue;
-    text-shadow: 1px 1px 1px $dark-blue;
+  ul {
+    padding-top: 1rem;
+    
+    li {
+      font-size: 23px;
+      color: $med-blue;
+      text-shadow: 1px 1px 1px $dark-blue;
+      padding: 0.1rem 0;
+      
+      @include atSmall {
+        padding: 0.4rem 0;
+      }
+      
+      @include atMedium {
+        padding: 0.5rem 0;
+      }
+      
+      @include atMedLarge {
+        padding: 0.75rem 0;
+      }
+      
+      @include atLarge {
+        padding: 1rem 0;
+      }
+    }
   }
 
   .map {

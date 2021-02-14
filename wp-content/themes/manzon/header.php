@@ -23,7 +23,10 @@
 <body>
   <header class="site-header">
     <div class="site-header__logo">
-      <a class="site-header__logo__title" href="<?php echo get_site_url() ?>">Manzon</a> 
+      <a class="site-header__logo__title" href="<?php echo get_site_url() ?>">
+        <img class="site-header__logo__image" src="<?php echo get_template_directory_uri() . '/src/images/manzon-logo-white.png'; ?>" /> 
+        Manzon
+      </a> 
       <!-- <div class="site-header__logo__subtitle"><em>Your local plumbing experts!</em></div> -->
     </div>
     <div class="site-header__menu-content">

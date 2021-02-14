@@ -1,6 +1,7 @@
 
 
 .slick-dots {
+  padding: 0;
 
   li {
     list-style: none;
@@ -29,4 +30,12 @@
     background-color: #FFF;
   }
 
+}
+
+.slider-nav {
+  padding: 0rem;
+
+  @include atSmall {
+    padding: 3rem;
+  }
 }

@@ -5,7 +5,7 @@ get_header();
 
 <section class="hero hero--home-page">
     <div class="hero__video">
-      <video loop autoplay playsinline width='100%' height='100%' src="<?php echo get_template_directory_uri() . '/src/videos/bathroom.mp4' ?>"  type='video/mp4'></video>
+      <video loop autoplay playsinline muted id="hero-video" width='100%' height='100%' src="<?php echo get_template_directory_uri() . '/src/videos/bathroom.mp4' ?>"  type='video/mp4'></video>
       <div class="hero__text">
         <h1 class="hero__text--headline">Residential or Commercial plumbing or renovations, we've got your back!</h1>
         <p>Manzon Development is a residential & commercial service company based in Abbotsford, B.C. Dedicated to
@@ -100,19 +100,19 @@ get_header();
   <section class="see-more">
 
     <h3 class="section-title section-title--no-p" id="see-more">See our Work</h3>
-    <p>For <span class="text--em text--bold">pricing</span>, <span class="text--em text--bold">image of our work</span>,
+    <p>For <span class="text--em text--bold">image of our work</span>,
       and <span class="text--em text--bold">more information</span> about our various services, see our Residential or
       Commercial pages.
     </p>
     <div class="container--industries">
       <div style="background-image: url(<?php echo get_template_directory_uri() . '/src/images/broom.jpeg' ?>)"
-        class="see-more__industry see-more__industry--residential"><a href="residential.html"><span
+        class="see-more__industry see-more__industry--residential"><a href="<?php echo get_site_url() . '/residential/' ?>"><span
             class="overline"></span>
           <h3>Residential</h3>
         </a>
       </div>
       <div style="background-image: url(<?php echo get_template_directory_uri() . '/src/images/industrial.jpeg' ?>)"
-        class="see-more__industry see-more__industry--commercial"><a href="commercial.html"><span
+        class="see-more__industry see-more__industry--commercial"><a href="<?php echo get_site_url() . '/commercial/' ?>"><span
             class="overline"></span>
           <h3>Commercial</h3>
         </a>
@@ -120,15 +120,14 @@ get_header();
     </div>
   </section>
 
-  <section class="property-managers ">
+  <section class="property-managers">
     <h2 class="section-title section-title--no-m">Services for Property Managers</h2>
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus non rem ea unde incidunt laboriosam eligendi
-      laborum molestias! Quaerat culpa reprehenderit distinctio ipsa nostrum enim hic minus ipsam cumque odit?
-    </p>
+    <p>We're experienced in working directly with property managers to meet all the service needs of their properties.</p>
 
-    <div class="call-to-action">
-      <p class="text-em">See our Residential Work</p>
+    <div class="see-residential-work">
+      <a href="<?php echo get_site_url() . '/residential/' ?>">See our Residential Work</a>
+      <span class="underline underline--white"></span>
     </div>
   </section>
 
@@ -164,21 +163,33 @@ get_header();
   <section class="reviews--section">
     <h3 class="section-title section-title--no-p">What our clients are saying</h3>
     <div class="reviews--slider">
-      <q class="text--em" cite="">I called Manzon on a weekend and they came down at a time that worked for me that very
-        Sunday! The service was impeccable.</q>
-      <q class="text--em" cite="">I just the other day got... an Internet was sent by my staff at 10 o'clock in the
-        morning on Friday. I got it yesterday </q>
-      <q class="text--em" cite="">They want to deliver vast amounts of information over the Internet. And again, the
-        Internet is not something that you just dump something on. It's not a big truck. It's a series of tubes</q>
+    <?php
+      $args = array(
+          'numberposts'	=> -1,
+          'post_type'		=> 'manzon_review',
+      );
+
+      $query = new WP_Query( $args );
+
+      while ( $query->have_posts() ) : $query->the_post(); 
+
+      ?>
+        <q class="text--em" cite=""><? echo the_content() ?></q>
+
+      <?php 
+        endwhile;
+        wp_reset_postdata();
+      ?>
+
+    </div>
+    <div class="google-reviews-link">
+      <a href="" target="_blank" rel="noopener noreferrer">See our Google Reviews</a>
+      <span class="underline underline--white"></span>
     </div>
   </section>
   <section class="call-to-action">
     <h3 class="section-title section-title--no-p">Our work is guaranteed and done with pride. Contact us today!</h3>
-    <div class="call-to-action__call-now">
-      <p class="text-em call-now">Call now: 604-751-3056</p>
-      <span class="underline"></span>
-    </div>
-    <button class="btn" type="button" name="button">Contact Us</button>
+    <a class="btn" href="<?php echo get_site_url() . '/contact/' ?>">Contact Us</a>
   </section>
 
 <?php

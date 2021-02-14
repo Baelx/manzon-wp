@@ -4,10 +4,10 @@
   width: 100%;
   z-index: 1;
   text-align: center;
-  padding: 2rem 0 2rem 0;
+  padding: 2rem 0;
 
   @include atMedLarge {
-    padding: 2rem 5rem;
+    padding: 3rem 5rem 4rem 5rem;
   }
 
   p {
@@ -22,7 +22,7 @@
   &__industry {
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 
     @include atSmall {
       width: 80%;
@@ -62,7 +62,7 @@
       height: 100%;
       position: relative;
       display: block;
-      padding: 30px 38px 40px;
+      padding: 3rem;
       color: unset;
       text-decoration: none;
 
@@ -98,6 +98,7 @@
 
     @include atMedium {
       display: flex;
+      justify-content: center;
     }
   }
 }
