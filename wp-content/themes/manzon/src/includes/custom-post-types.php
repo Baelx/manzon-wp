@@ -7,7 +7,9 @@ function manzon_reviews_post_type() {
             'name'          => __('Reviews', 'textdomain'),
             'singular_name' => __('Review', 'textdomain'),
             'add_new_item'  => __('Add New Review', 'textdomain' ),
-            'edit_item'     => __('Edit Review', 'textdomain')
+            'edit_item'     => __('Edit Review', 'textdomain'),
+            'add_new_item'  => __( 'Add Review' ),
+
         ),
             'public'      => true,
             'has_archive' => true,
@@ -24,7 +26,9 @@ function manzon_services_post_type() {
             'name'          => __('Services', 'textdomain'),
             'singular_name' => __('Service', 'textdomain'),
             'add_new_item'  => __( 'Add New Service', 'textdomain' ),
-            'edit_item'     => __('Edit Service', 'textdomain')
+            'edit_item'     => __('Edit Service', 'textdomain'),
+            'add_new_item'  => __( 'Add Service' ),
+
         ),
             'public'      => true,
             'has_archive' => true,

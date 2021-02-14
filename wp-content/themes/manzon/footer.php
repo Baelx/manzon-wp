@@ -27,9 +27,9 @@
         <ul class="unstyled-list">
         </ul>
         <ul class="social-icons unstyled-list">
-          <li><a href="facebook.com"><i class="fab fa-facebook"></i></a> </li>
-          <li><a href="instagram.com"><i class="fab fa-instagram"></i></a> </li>
-          <li><a href="twitter.com"><i class="fab fa-twitter"></i></a> </li>
+          <li><a href="<?php echo esc_attr(get_option('facebook_link')); ?>"><i class="fab fa-facebook"></i></a> </li>
+          <li><a href="<?php echo esc_attr(get_option('instagram_link')); ?>"><i class="fab fa-instagram"></i></a> </li>
+          <li><a href="<?php echo esc_attr(get_option('google_link')); ?>"><i class="fab fa-google"></i></a> </li>
         </ul>
       </div>
 

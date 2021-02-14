@@ -1232,20 +1232,17 @@ a {
 .reviews--section q:before, .reviews--section q:after {
   content: "";
 }
-.reviews--section .google-reviews-link {
-  width: fit-content;
-  margin: 0 auto;
-  padding: 1rem 0;
-}
-.reviews--section .google-reviews-link a {
-  font-size: 1.5rem;
-}
 .reviews--main {
   color: white;
   text-align: center;
   background-color: #9199b8;
-  display: flex;
-  padding: 2em 5em 2em 5em;
+  display: inline-block;
+  padding: 0.75rem;
+}
+@media (min-width: 800px) {
+  .reviews--main {
+    padding: 2em 5em 2em 5em;
+  }
 }
 .reviews--main .single-review {
   margin: 2em;
@@ -1255,8 +1252,20 @@ a {
   font-weight: 300;
   padding: 2em;
 }
+.reviews--main q:before, .reviews--main q:after {
+  content: "";
+}
 .reviews--main cite {
   font-size: 20px;
+}
+
+.google-reviews-link {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+.google-reviews-link a {
+  font-size: 1.5rem;
 }
 
 .slick-dots {
@@ -1423,6 +1432,10 @@ a {
 }
 .call-to-action .contact-info {
   color: black;
+  padding: 1rem;
+}
+.call-to-action .contact-info i {
+  display: inline;
 }
 .call-to-action .contact-info p {
   display: inline;
@@ -1595,6 +1608,15 @@ svg {
 .about-page .cover .about-content p {
   font-size: 30px;
   font-weight: 300;
+}
+
+.about--reviews {
+  display: inline-block;
+}
+@media (min-width: 800px) {
+  .about--reviews {
+    display: flex;
+  }
 }
 
 .contact-page .service-areas {

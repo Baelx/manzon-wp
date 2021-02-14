@@ -24,42 +24,52 @@
     }
 
 
-    .google-reviews-link {
-      width: fit-content;
-      margin: 0 auto;
-      padding: 1rem 0;
-  
-      a {
-        font-size: 1.5rem;
-      }
-    }
   }
-
+  
   &--main {
     color: white;
     text-align: center;
     background-color: $light-blue;
-    display: flex;
-    padding: 2em 5em 2em 5em;
+    display: inline-block;
+    padding: 0.75rem;
 
+    @include atMedium {
+      padding: 2em 5em 2em 5em;
+
+    }
+    
     h3 {
       // grid-column: span 2;
     }
-
+    
     .single-review {
       margin: 2em;
     }
-
+    
     q {
       font-size: 25px;
       font-weight: 300;
       padding: 2em;
+      
+      &:before, &:after {
+        content: "";
+      }
     }
-
+    
     cite {
       font-size: 20px;
-
+      
     }
   }
+  
+}
 
+.google-reviews-link {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1rem 0;
+
+  a {
+    font-size: 1.5rem;
+  }
 }

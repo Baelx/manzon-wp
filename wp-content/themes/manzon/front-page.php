@@ -34,66 +34,25 @@ get_header();
   <section class="features">
     <h3 class="section-title section-title--padding">We do all jobs <span>-</span> big or small</h3>
     <ul class="features__container unstyled-list">
+      <?php 
 
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p> Plumbing</p>
-      </li>
+        $feature_taxonomies = get_terms( array(
+          'taxonomy' => 'feature',
+          'hide_empty' => false
+        ) );
 
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>Hot water</p>
-      </li>
+        foreach( $feature_taxonomies as $feature ) {
+          ?>
+            <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
+                <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
+              <p><?php echo esc_attr($feature->name) ?></p>
+            </li>
 
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>crumb bums</p>
-      </li>
+          <?php
 
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>Residential man says hi</p>
-      </li>
+        }
 
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>Residential Plumbing</p>
-      </li>
-
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>Residentials kicking</p>
-      </li>
-
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>Residential fourtenn has ten</p>
-      </li>
-
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>lumbing</p>
-      </li>
-
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>Residential Plumbing</p>
-      </li>
-
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>Residents love us</p>
-      </li>
-
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>Residential Plumbing</p>
-      </li>
-
-      <li class="feature"><svg version="1.1" viewBox="0 0 130.2 130.2">
-          <polyline class="check" points="101,39 50.2,86.9 30,64.5" /></svg>
-        <p>Residentials</p>
-      </li>
+      ?>
     </ul>
   </section>
 
@@ -133,30 +92,49 @@ get_header();
 
   <section class="service-areas clearfix" style="background-image: url(<?php echo get_template_directory_uri() . '/src/images/downtown.jpg' ?>)">
     <div class="cover">
-      <h3 class="section-title section-title--no-p">Covering all of the lower mainland</h3>
-
+      <h3 class="section-title section-title--no-p">Service available throughout the Lower Mainland</h3>
       <div class="container clearfix">
+        <?php 
+
+        $area_taxonomies = get_terms( array(
+          'taxonomy' => 'service_area',
+          'hide_empty' => false
+        ) );
+
+        $odd_areas = array();
+        $even_areas = array();
+        foreach ($area_taxonomies as $k => $v) {
+            if ($k % 2 == 0) {
+                $even_areas[] = $v;
+            }
+            else {
+                $odd_areas[] = $v;
+            }
+        }
+        ?>
         <ul class="col-3 unstyled-list areas--first">
-          <li>Vancouver</li>
-          <li>West Van</li>
-          <li>Burnaby</li>
-          <li>Coquitlam</li>
-          <li>Richmond</li>
-          <li>Delta</li>
-          <li>New Westminster</li>
-          <li>Point Grey</li>
+        <?php
+        foreach( $odd_areas as $area ) {
+          ?>
+            <li><?php echo esc_attr($area->name) ?></li>
+          <?php
+        }
+        ?>
         </ul>
+        <?php
+        ?>
         <img src="<?php echo get_template_directory_uri() . '/src/images/map.png' ?>" alt="lower-mainland" class="col-6 map">
         <ul class="col-3 unstyled-list areas--second">
-          <li>Port Moody</li>
-          <li>Port Coquitlam</li>
-          <li>Pitt Meadows</li>
-          <li>Maple Ridge</li>
-          <li>Surrey</li>
-          <li>Langley</li>
-          <li>Abbotsford</li>
-          <li>White Rock</li>
+        <?php
+        foreach( $even_areas as $area ) {
+          ?>
+            <li><?php echo esc_attr($area->name) ?></li>
+          <?php
+        }
+        ?>
         </ul>
+        <?php
+        ?>
       </div>
     </div>
   </section>
@@ -183,7 +161,7 @@ get_header();
 
     </div>
     <div class="google-reviews-link">
-      <a href="" target="_blank" rel="noopener noreferrer">See our Google Reviews</a>
+      <a href="<?php echo esc_attr(get_option('google_reviews_link')); ?>" target="_blank" rel="noopener noreferrer">See our Google Reviews</a>
       <span class="underline underline--white"></span>
     </div>
   </section>

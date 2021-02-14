@@ -44,3 +44,12 @@
   }
   
 }
+
+.about--reviews {
+  display: inline-block;
+
+  @include atMedium {
+    display: flex;
+  }
+
+}

@@ -21,6 +21,7 @@ function manzon_add_admin_settings() {
     register_setting('manzon-settings-group', 'facebook_link');
     register_setting('manzon-settings-group', 'instagram_link');
     register_setting('manzon-settings-group', 'google_link');
+    register_setting('manzon-settings-group', 'google_reviews_link');
     
     add_settings_section('manzon-contact-options', 'Contact Information', 'manzon_contact_options_callback', 'manzon_theme');
     add_settings_section('manzon-social-options', 'Social Media Links', 'manzon_social_media_callback', 'manzon_theme');
@@ -30,6 +31,7 @@ function manzon_add_admin_settings() {
     add_settings_field('facebook_link', 'Facebook link', 'manzon_facebook_link_callback', 'manzon_theme', 'manzon-social-options');
     add_settings_field('instagram_link', 'Instagram link', 'manzon_instagram_link_callback', 'manzon_theme', 'manzon-social-options');
     add_settings_field('google_link', 'Google business link', 'manzon_google_link_callback', 'manzon_theme', 'manzon-social-options');
+    add_settings_field('google_reviews_link', 'Google Reviews link', 'manzon_google_reviews_link_callback', 'manzon_theme', 'manzon-social-options');
 }
 
 function manzon_contact_options_callback() {
@@ -69,19 +71,11 @@ function manzon_google_link_callback() {
     echo '<input type="text" name="google_link" value="'.$googleLink.'" />';
 }
 
+function manzon_google_reviews_link_callback() {
+    $googleReviewsLink = esc_attr(get_option('google_reviews_link'));
+    echo '<input type="text" name="google_reviews_link" value="'.$googleReviewsLink.'" />';
+}
+
 add_theme_support( 'post-thumbnails' );
 
 add_action('admin_menu', 'manzon_add_admin_page');
-
-
-add_action( 'admin_menu', 'linked_url' );
-
-add_action( 'admin_menu' , 'linkedurl_function' );
-
-function linked_url() {
-    add_menu_page( 'linked_url', 'External link', 'read', 'my_slug', '', 'dashicons-text', 1 );
-}
-function linkedurl_function() {
-    global $menu;
-    $menu[1][2] = "http://www.example.com";
-}

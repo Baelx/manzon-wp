@@ -13,26 +13,33 @@
   </section>
   <section id="reviews" class="reviews--main">
     <h3 class="section-title--info">Our Reviews</h3>
-    <div class="single-review">
-      <q class="text--em" cite="customer name">Sample review text</q>
-    </br>
-    <cite>customer name</cite>
+    <div class="about--reviews">
+    <?php
+      $args = array(
+          'numberposts'	=> -1,
+          'post_type'		=> 'manzon_review',
+      );
+
+      $query = new WP_Query( $args );
+
+      while ( $query->have_posts() ) : $query->the_post(); 
+
+      ?>
+        <div class="single-review">
+          <q class="text--em" cite="customer name"><? echo esc_attr(the_content()) ?></q>
+          </br>
+        </div>
+
+      <?php 
+        endwhile;
+        wp_reset_postdata();
+      ?>
+    </div>
+    <div class="google-reviews-link">
+        <a href="<?php echo esc_attr(get_option('google_reviews_link')); ?>" target="_blank" rel="noopener noreferrer">See our Google Reviews</a>
+        <span class="underline underline--white"></span>
+    </div>
   </div>
-  <div class="single-review">
-    <q class="text--em" cite="customer name">Sample review text</q>
-  </br>
-  <cite>customer name</cite>
-</div>
-<div class="single-review">
-  <q class="text--em" cite="customer name">Sample review text</q>
-</br>
-<cite>customer name</cite>
-</div>
-<div class="single-review">
-  <q class="text--em" cite="customer name">Sample review text</q>
-</br>
-<cite>customer name</cite>
-</div>
 </section>
 
 <section class="call-to-action">
